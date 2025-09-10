@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给最爱的猪猪柔 ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            color: #fff;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .quote {
+            font-size: 1.4em;
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: glow 1.5s ease-in-out infinite alternate;
+            line-height: 1.5;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #fff; }
+            to { box-shadow: 0 0 20px #ff6ec7, 0 0 30px #ff6ec7; }
+        }
+        button {
+            background: #ff6ec7;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            font-family: inherit;
+            outline: none;
+        }
+        button:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6ec7;
+            font-size: 1.5em;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.8;
+            user-select: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <h1>🐷 给最爱的猪猪柔 ❤️ 🐷</h1>
+    
+    <div class="quote" id="quote">
+        正在加载今日份甜蜜...
+    </div>
+
+    <button onclick="surprise()">💕 戳我有惊喜！</button>
+
+    <div class="footer">
+        —— 你的小笨蛋专属制作 ——
+    </div>
+
+    <script>
+        const loveQuotes = [
+            "猪猪柔，你一笑，我的世界就亮了 🌞",
+            "今天也是想把你捧在手心的一天 💖",
+            "别人是宝藏，你是我的宇宙中心 🌌",
+            "和你在一起的每一秒，都是我偷来的糖 🍬",
+            "就算世界停电，我的心里也为你留着一盏灯 💡",
+            "猪猪柔，不准熬夜！不然我变成小闹钟吵你睡觉 ⏰",
+            "你是我藏在枕头下的梦，也是我醒来看见的光 ☀️",
+            "想变成你家的猫，蹭你一整天还理直气壮 😺",
+            "全世界我都可以不理，但你的消息必须秒回 💬",
+            "猪猪柔，今天也比昨天更爱你一点点 📈"
+        ];
+
+        const surprises = [
+            "猪猪柔，你是我宇宙唯一的恒星！🌟",
+            "不准再说自己胖！你是最可爱的糯米团子！🍡",
+            "我已经在计划下次带你去吃甜品了～🍰",
+            "每天睁眼第一件事：想你。第二件事：继续想你。",
+            "你打呼噜我都觉得是ASMR～😴",
+            "以后老了也要牵着你去买菜、晒太阳、数皱纹～👵👴",
+            "猪猪柔，今天也要开心得冒泡哦！🥤",
+            "我可能不会说永远，但我会一直在你转身就能看见的地方。"
+        ];
+
+        // 随机显示一句情话
+        document.getElementById('quote').textContent = 
+            loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+
+        // 创建飘动的爱心
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 35; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 1 + 1) + 'em';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // 惊喜弹窗
+        function surprise() {
+            const msg = surprises[Math.floor(Math.random() * surprises.length)];
+            const div = document.createElement('div');
+            div.style.position = 'fixed';
+            div.style.top = '50%';
+            div.style.left = '50%';
+            div.style.transform = 'translate(-50%, -50%)';
+            div.style.background = 'white';
+            div.style.color = '#ff6ec7';
+            div.style.padding = '30px';
+            div.style.borderRadius = '20px';
+            div.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            div.style.zIndex = 9999;
+            div.style.fontFamily = 'inherit';
+            div.style.fontSize = '1.2em';
+            div.style.textAlign = 'center';
+            div.style.maxWidth = '80%';
+            div.innerHTML = `
+                <div style="font-size: 2em; margin-bottom: 15px;">💖</div>
+                <div>${msg}</div>
+                <button onclick="this.parentElement.remove()" 
+                        style="margin-top:20px; padding:10px 25px; background:#ff6ec7; color:white; border:none; border-radius:30px; cursor:pointer;">
+                    好耶！
+                </button>
+            `;
+            document.body.appendChild(div);
+        }
+
+        // 每隔10秒换一句情话（可选）
+        setInterval(() => {
+            document.getElementById('quote').textContent = 
+                loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+        }, 10000);
+    </script>
+</body>
+</html>
